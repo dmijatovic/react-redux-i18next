@@ -1,0 +1,108 @@
+/*
+  src: NavBar.scss
+  v0.0.1 Sep 2018
+  NOTE
+  This partial assumes that display flex is used for page layout.
+  The parent element should have following defined
+    display:flex;
+    flex-direction: column;
+*/
+
+@import '../styles/css-variables';
+
+.app-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: var(--color-light-0);
+  border-top: var(--border-2);
+  border-bottom: var(--border-2);
+
+  &-body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--body-content-width);
+  }
+}
+
+.app-navbar .app-row{
+  padding: 0rem 1rem;
+}
+
+.nav-menu {
+  display:flex;
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+li.link-item {
+  list-style: none;
+  padding: 1rem;
+  margin: 0.5rem 0rem;
+  border-right: var(--border-2);
+}
+
+li.link-item:first-child{
+  border-left: var(--border-2);
+}
+
+a.link-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(---color-dark-2);
+  font-size: 0.925rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  opacity: 0.5;
+}
+
+
+a.link-item:hover:not(.selected){
+  opacity: 0.7;
+  /*background-color: var(--color-accent-0)*/;
+}
+
+a.link-item.selected{
+  color: var(--color-primary);
+  /*background-color: var(--color-accent-1);*/
+  opacity: 1;
+}
+
+
+.nav-widgets{
+  display: flex;
+  padding: 0rem 1rem;
+}
+
+
+@media screen and (min-width:768px){
+  a.link-item{
+    width: 17rem;
+    height: 3.5rem;
+  }
+  li.link-item{
+    /*width: none;*/
+    padding: 0rem;
+  }
+}
+
+@media screen and (max-width:768px){
+  .nav-menu{
+    flex:1;
+  }
+  li.link-item{
+    flex:1;
+  }
+}
+
+@media screen and (max-width:480px){
+  a.link-item{
+    letter-spacing: 0rem;
+  }
+}

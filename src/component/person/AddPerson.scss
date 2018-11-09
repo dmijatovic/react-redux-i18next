@@ -1,0 +1,16 @@
+/*
+  AddPerson.scss
+  v.0.0.1 Oct 2018
+*/
+
+.persons{
+  &-add{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  &-add-title{
+    flex:1;
+  }
+}

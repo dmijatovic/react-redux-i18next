@@ -1,0 +1,62 @@
+/*
+  Flex direction
+*/
+@mixin fdMedia($size, $maxWidth){
+  @media screen and (max-width:$maxWidth){
+    .fd-row-#{$size}{
+      flex-direction: row;
+    }
+
+    .fd-col-#{$size}{
+      flex-direction: column;
+    }
+  }
+}
+
+/*
+  FLEX-ing element
+*/
+@mixin flexElMedia($size, $width, $flex, $type:max-width){
+  @media screen and (#{$type}:$width){
+    .flex-#{$flex}-#{$size}{
+      flex: $flex;
+    }
+  }
+}
+
+/*
+  PADDING mixin
+*/
+@mixin pdMedia ($size, $width, $val, $type:min-width){
+  @media screen and (#{$type}:$width){
+    .pdt-#{$val}-#{$size}{
+      padding-top: #{$val}rem;
+    }
+    .pdr-#{$val}-#{$size}{
+      padding-right: #{$val}rem;
+    }
+    .pdb-#{$val}-#{$size}{
+      padding-bottom: #{$val}rem;
+    }
+    .pdl-#{$val}-#{$size}{
+      padding-left: #{$val}rem;
+    }
+  }
+}
+
+@mixin marginMedia ($size, $width, $val, $type:max-width){
+  @media screen and (#{$type}:$width){
+    .mt-#{$val}-#{$size}{
+      margin-top: #{$val}rem;
+    }
+    .mr-#{$val}-#{$size}{
+      margin-right: #{$val}rem;
+    }
+    .mb-#{$val}-#{$size}{
+      margin-bottom: #{$val}rem;
+    }
+    .ml-#{$val}-#{$size}{
+      margin-left: #{$val}rem;
+    }
+  }
+}

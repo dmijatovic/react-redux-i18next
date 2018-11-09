@@ -1,0 +1,122 @@
+/*
+  src: flex.css
+  v0.0.1 Sep 2018
+
+  NOTE
+  FLEX HELPER CLASSES
+  This partial assumes that display flex is used for page layout.
+  if not add class flex
+*/
+
+@import './mixins.scss';
+
+/*
+  DISPLAY types
+  flex and block
+*/
+
+.dflex,.dflex-row{
+  display:flex;
+}
+
+.dblock{
+  display:block;
+}
+
+/*------------------------------------------------
+  FLEX DIRECTON => fd
+  xl > 1366px see @media
+--------------------------------------------------*/
+
+.fd-row,.fd-row-xl{
+  flex-direction: row;
+}
+
+.fd-col,.fd-col-xl{
+  flex-direction: column;
+}
+
+/*--width-lg */
+@include fdMedia("max-lg","1366px");
+/*--width-md */
+@include fdMedia("max-md","1024px");
+/*--width-sm */
+@include fdMedia("max-sm","768px");
+/*--width-xs */
+@include fdMedia("max-xs","480px");
+
+/*-------------------------------------------------
+  FLEX ELEMENT
+  produces folowing code
+  @media screen and (max-width:$maxWidth){
+    .flex-$flex-$size{ flex: $flex }
+    .flex-1-xl{ flex: 1 1 }
+  }
+--------------------------------------------------*/
+
+/*--width-xl */
+@include flexElMedia("min-lg","1366px",1,min-width);
+@include flexElMedia("min-lg","1366px",2,min-width);
+@include flexElMedia("min-lg","1366px",3,min-width);
+@include flexElMedia("min-lg","1366px",4,min-width);
+/*--width-lg */
+@include flexElMedia("lg","1366px",1);
+@include flexElMedia("lg","1366px",2);
+@include flexElMedia("lg","1366px",3);
+@include flexElMedia("lg","1366px",4);
+/*--width-md */
+@include flexElMedia("md","1024px",1);
+@include flexElMedia("md","1024px",2);
+@include flexElMedia("md","1024px",3);
+@include flexElMedia("md","1024px",4);
+
+@include flexElMedia("min-md","1023px",1,min-width);
+@include flexElMedia("min-md","1023px",2,min-width);
+@include flexElMedia("min-md","1023px",3,min-width);
+@include flexElMedia("min-md","1023px",4,min-width);
+
+/*--width-sm */
+@include flexElMedia("sm","768px",1);
+@include flexElMedia("sm","768px",2);
+@include flexElMedia("sm","768px",3);
+@include flexElMedia("sm","768px",4);
+/*--width-xs */
+@include flexElMedia("xs","480px",1);
+@include flexElMedia("xs","480px",2);
+@include flexElMedia("xs","480px",3);
+@include flexElMedia("xs","480px",4);
+
+/*-----------------------------------------------------
+  JUSTIFY CONTENT => jc
+  NOTE! it depends on flex-direction row/column how will behave
+-------------------------------------------------------*/
+
+.jc-space-between{
+  justify-content: space-between;
+}
+
+.jc-space-even{
+  justify-content: space-evenly;
+}
+
+.jc-center{
+  justify-content: center;
+}
+
+.jc-flex-end{
+  justify-content: flex-end;
+}
+
+/*
+  ALIGN-ITEMS => ai
+  NOTE! it depends on flex-direction row/column how will behave
+*/
+
+.ai-center{
+  align-items: center;
+}
+
+.ai-flex-end{
+  align-items: flex-end;
+}
+

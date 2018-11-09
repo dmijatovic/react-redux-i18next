@@ -1,0 +1,20 @@
+@import "../styles/css-variables";
+
+.page {
+  &-body-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: var(--border-1);
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+  &-body-intro {
+    padding: 1rem;
+  }
+  &-content {
+    //flex:1;
+    display: flex;
+    min-height: 50rem;
+  }
+}

@@ -1,0 +1,134 @@
+
+@import 'variables';
+
+//------------------------------
+// BASIC RESET
+*,
+*::before,
+*::after{
+  margin:0;
+  padding:0;
+  //all elements will inherit from the body
+  //where we set box-sizing: border-box
+  box-sizing: inherit;
+}
+
+html{
+  /** FONT size and relative sizes calculation using rem
+  we want to enable user to set the fontsize but we also need
+  easy way to calculate out rem units. To achieve both the following
+  approach is advised. Default font size is 16px. So setting font size
+  to 100% we now that our starting size for 1rem = 16px. It would be easer
+  for us if we can set start to 10px so we can easily use decimals in rem,
+  for example 10px = 1rem => 1.65rem = 16.5px. To achive easy math we
+  can set font size to 10/16 = 62.5%. Note! when changing font size
+  the complete layout will change because all dimensions are set
+  in rem units.
+  */
+  //estimated 16px=1rem;
+  font-size: 100%;
+
+  @media screen and (max-width:$width-sm){
+    font-size: 75%;
+  }
+
+  @media screen and (max-width:$width-xs){
+    font-size: 50%;
+  }
+
+}
+
+body{
+  font-family: $font-family;
+  color: var(--color-dark-1);
+  /*background-image: linear-gradient(to bottom right,
+    var(--color-primary-light), var(--color-primary-dark)
+  );*/
+  box-sizing: border-box;
+}
+
+
+.app{
+  &-main{
+    display:flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-color: var(--color-light-3);
+  }
+
+  &-body{
+    //expand
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  &-page-title{
+    padding: 0rem 1rem;
+  }
+
+  &-loader{
+    position: absolute;
+    left: 0; right:0;
+    top: 0; bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.react-app{
+  flex:1;
+  display: flex;
+  flex-direction: column;
+}
+
+/*--------------------------------------------
+  MEDIA QUERIES for page scaling
+----------------------------------------------*/
+
+/*--width-lg 82.5% => 1rem = 14px */
+@media screen and (max-width:1600px){
+  html{
+    font-size: 87.5%;
+  }
+}
+
+
+/*--width-md 75% => 1rem = 12px */
+@media screen and (max-width:1280px){
+  html{
+    font-size: 75%;
+  }
+  :root{
+    --body-content-width: 93vw;
+  }
+}
+
+/*--width-sm 62.5% => 1rem = 10px */
+@media screen and (max-width:768px){
+  html{
+    font-size: 62.5%;
+  }
+  :root{
+    --body-content-width: 95vw;
+  }
+}
+
+/*--width-xs 50% => 1rem = 8px */
+@media screen and (max-width:480px){
+  html{
+    font-size: 50%;
+  }
+  :root{
+    --body-content-width: 100vw;
+  }
+}
+
+/*--width-xxs */
+@media screen and (max-width:320px){
+  html{
+    font-size: 42%;
+  }
+}
+

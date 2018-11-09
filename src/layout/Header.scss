@@ -1,0 +1,46 @@
+/*
+  Header.scss
+  v.0.0.1
+*/
+
+@import '../styles/css-variables';
+
+.app{
+  &-header{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-light-0)
+  }
+  &-header-body{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: var(--body-content-width);
+  }
+  &-logo{
+    display:flex;
+    height: 3rem;
+    width: 6rem;
+    //border: 1px solid black;
+    background-image: url('../../static/img/favicon64.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  &-title{
+    padding: 2rem 0rem;
+    font-size: 1.5rem;
+    color: var(--color-dark-1);
+  }
+  &-page-title{
+    padding: 0.5rem 0rem;
+    font-size: 1.25rem;
+    font-weight: 300;
+    align-self: flex-end;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    color: var(--color-dark-2);
+  }
+}

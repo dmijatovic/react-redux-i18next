@@ -1,0 +1,58 @@
+
+.form{
+
+  &-input{
+    display: block;
+    width: 100%;
+    //inputs do not inherit font props automatically (as other elements)
+    font-family: inherit;
+    font-size: 1rem;
+    color: inherit;
+    padding: 1rem 2rem;
+    border-radius: 0.2rem;
+    //see trough effect
+    background-color: rgba(255,255,255,0.8);
+    border: none;
+    //invisible border to avoid 'moving'
+    border-bottom: 3px solid transparent;
+
+    //add animation
+    transition: all 0.3s;
+
+    //set border-bottom on focus
+    &:focus{
+      outline: none;
+      box-shadow: var(--box-shadow-md);
+      border-bottom: 3px solid var(--color-primary);
+    }
+
+    //set border botton on invalid
+    &:focus:invalid{
+      border-bottom: 3px solid var (--warn-color);
+    }
+
+    //select placeholder pseudo element
+    &::input-placeholder{
+      color: var(--color-dark-2);
+    }
+  }
+
+  &-label{
+    display: block;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    //always on the 'plain' element
+    transition: all 0.5s;
+    transform: translateY(-8rem);
+  }
+
+  //select label that comes directly after input element
+  //ONLY when placeholder is shown
+  //note! the order of elements in html matters.
+  &-input:placeholder-shown + &-label{
+    //because we cannot animate visibility
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-5rem);
+  }
+}
