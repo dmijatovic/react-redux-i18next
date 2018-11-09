@@ -13,6 +13,15 @@ This is webpack 4 starter with scss enabled, babel version 7 and redux. It test 
 
 i18next documentation is good. Here I will write down some gotchas?
 
+- DO NOT import \* from './translation.json' because it will add default property
+
+```javascript
+//DONT
+import * as US from "./locale/en/translation.json";
+//DO
+import US from "./locale/en/translation.json";
+```
+
 ### How to add language?
 
 - **create translation file**: create new json file based on the default json file en.json at the same location (static/data/en.json). The filename needs to be defined in the config file (see point 3). Go to google translate and translate all items :-). _Maybe we can use Google Translate API?!? When double-quotes (") appear in the text use escape chart (\\). See example below._
