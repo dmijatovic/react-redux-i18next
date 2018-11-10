@@ -42,20 +42,20 @@ const mapDispatchToProps = dispatch => {
  */
 const mapStateToProps = state => {
   //debugger
-  let { key } = state.i18n.lang;
+  let { key } = state.i18r.lang;
 
   if (key) {
     //language is loaded
-    let selected = state.i18n.options.filter(
+    let selected = state.i18r.options.filter(
       item => item.key === key
     );
     return {
-      languages: state.i18n.options,
+      languages: state.i18r.options,
       selected: JSON.stringify(selected),
     };
   } else {
     return {
-      languages: state.i18n.options,
+      languages: state.i18r.options,
       selected: null,
     };
   }

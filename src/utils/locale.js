@@ -7,6 +7,8 @@
 import cfg from '../store/app.cfg';
 import * as actionType from '../store/actions';
 
+import i18n from '../i18n';
+
 /**
  * Get user language from localStorage
  * or default from store/app.cfg.js
@@ -28,7 +30,7 @@ export const getLanguage = key => {
       //get first 2 letter from the locale
       let ln = navigator.language.split('-');
       //check if language available in cfg
-      let lang = cfg.i18n.options.filter(
+      let lang = cfg.i18r.options.filter(
         item => item.key == ln[0]
       );
       if (lang.length === 1) {
@@ -38,7 +40,7 @@ export const getLanguage = key => {
     }
     //navigator language is not available
     //so use default from config
-    return cfg.i18n.defaultLang;
+    return cfg.i18r.defaultLang;
   }
 };
 
@@ -46,13 +48,30 @@ export const getLanguage = key => {
  * Set language key into localStorage
  * @param {string} lang 2-letter language key stored in definitions
  */
-export const setLanguage = ({ key, val }) => {
-  //debugger
+export const setLanguage = lang => {
+  let { lsKey, key, ns, data } = lang;
+
+  debugger;
+
   if (localStorage) {
-    localStorage.setItem(key, val);
+    localStorage.setItem(lsKey, key);
   } else {
     //eslint-disable-next-line
     console.error("localStorage...MISSING");
+  }
+
+  if (i18n.hasResourceBundle(key, ns)) {
+    console.log('Have language in the resource');
+    //change language
+    i18n.changeLanguage(key);
+  } else if (data) {
+    i18n.addResourceBundle(key, ns, data);
+    console.log(`Added language ${key} in the resource`);
+    //change language
+    i18n.changeLanguage(key);
+    //trans = i18n.getFixedT(ns);
+  } else {
+    console.log(`Missing language ${key} in the resource`);
   }
 };
 
@@ -60,7 +79,7 @@ export const setLanguage = ({ key, val }) => {
  * Intial loading of language information
  */
 export const initLocale = dispatch => {
-  //debugger
+  //debugger;
   //get language key from localStorage or config
   let key = getLanguage(cfg.i18n.lsKey);
   //get info where translations are

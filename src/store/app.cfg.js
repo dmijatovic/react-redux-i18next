@@ -35,20 +35,26 @@ export const cfg = {
     options: [
       {
         key: 'en',
+        //i18next ns=namespace
+        ns: 'core',
         label: 'English',
-        data: 'data/en.json',
+        data: 'locale/en/us.json',
         icon: 'img/us.svg',
       },
       {
         key: 'nl',
+        //i18next ns=namespace
+        ns: 'core',
         label: 'Nederlands',
-        data: 'data/nl.json',
+        data: 'locale/nl/nl.json',
         icon: 'img/nl.svg',
       },
       {
         key: 'ru',
+        //i18next ns=namespace
+        ns: 'core',
         label: 'Русский',
-        data: 'data/ru.json',
+        data: 'locale/ru/ru.json',
         icon: 'img/ru.svg',
       },
     ],

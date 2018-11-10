@@ -156,3 +156,10 @@ export const languageReducer = (state = cfg.i18n, action) => {
       return state;
   }
 };
+
+//i18next
+import i18n from '../i18n';
+
+export const i18nextReducer = (state = i18n, action) => {
+  return state;
+};

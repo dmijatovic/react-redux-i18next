@@ -5,8 +5,11 @@
 
 import * as actionType from './actions';
 //eslint-disable-next-line
-import { logGroup, setLanguage } from '../utils';
+import { logGroup } from '../utils';
+import { setLanguage } from '../i18n';
+
 import cfg from './app.cfg';
+
 /**
  * Fetch data middleware, uses fetch API
  * @param param.getState: fn, received from redux
@@ -33,7 +36,12 @@ export const asyncFetch = ({ getState, dispatch }) => {
         //load translations
         fetchTranslations(action.payload.data)
           .then(t => {
-            //debugger
+            //save language preference to localStorage
+            setLanguage({
+              key: action.payload.key,
+              ns: action.payload.ns,
+              data: t,
+            });
             //emit action to set new language
             next({
               type: actionType.SET_LANG_OK,
@@ -41,12 +49,6 @@ export const asyncFetch = ({ getState, dispatch }) => {
                 ...action.payload,
                 data: t,
               },
-            });
-            //debugger
-            //save language preference to localStorage
-            setLanguage({
-              key: cfg.i18n.lsKey,
-              val: action.payload.key,
             });
             /* hide loader
           next ({

@@ -1,73 +1,72 @@
 {
-  "header": {
-    "title": "App title in English",
+  "Header": {
+    "appTitle": "App titel in Nederlands",
     "pageTitle": "Default - placeholder - not used"
   },
-  "Header.pageTitle": "This is flat page title",
   "Footer": {
-    "left": "Text to show on the left side",
-    "right": "Text to show on the right side"
+    "left": "Footer tekst aan de linkerzijde",
+    "right": "Footer tekst rechts"
   },
   "Language": {
-    "selectLabel": "Language"
+    "selectLabel": "Taal"
   },
   "Home": {
-    "pageTitle": "Home page",
-    "introText": "This page test translations on the few components. Add person info like name and age in the area below. Check if all labels are localized :-)"
+    "pageTitle": "Startpagina",
+    "introText": "Deze pagina test vertaling opzet voor aantal componenten. Voeg een persoon toe d.m.v. input hieronder en controleer of alle 'labels' zijn just vertaald naar de gekozen taal."
   },
   "AddPerson": {
-    "title": "Add person",
+    "title": "Voeg een persoon toe aan de lijst",
     "input": {
       "name": {
-        "placeholder": "First and Last name"
+        "placeholder": "Voornaam en achternaam"
       },
       "age": {
-        "placeholder": "Age"
+        "placeholder": "Leeftijd"
       }
     },
-    "btnLabel": "Add"
+    "btnLabel": "Voeg toe!"
   },
   "Persons": {
-    "ListTitle": "List of added persons",
-    "ListEmptyMessage": "No person to show - ADD ONE :-)"
+    "ListTitle": "Overzicht van toegevoegde personen",
+    "ListEmptyMessage": "Geen personen - Voeg eentje toe :-)"
   },
   "PersonCard": {
-    "nameLabel": "Name:",
-    "ageLabel": "Age:",
-    "addedLabel": "Added on ",
-    "atLabel": "at "
+    "nameLabel": "Naam:",
+    "ageLabel": "Leeftijd:",
+    "addedLabel": "Toegevoed op",
+    "atLabel": "exacte tijd "
   },
   "About": {
-    "pageTitle": "About page",
+    "pageTitle": "Over ons",
     "pageSections": [
       {
-        "sectionTitle": "What is Lorem Ipsum?",
-        "sectionText": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        "sectionTitle": "Wat is Lorem Ipsum?",
+        "sectionText": "Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting. Het is in de jaren '60 populair geworden met de introductie van Letraset vellen met Lorem Ipsum passages en meer recentelijk door desktop publishing software zoals Aldus PageMaker die versies van Lorem Ipsum bevatten."
       },
       {
-        "sectionTitle": "Where does it come from?",
-        "sectionText": "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32."
+        "sectionTitle": "Waar komt het vandaan?",
+        "sectionText": "In tegenstelling tot wat algemeen aangenomen wordt is Lorem Ipsum niet zomaar willekeurige tekst. het heeft zijn wortels in een stuk klassieke latijnse literatuur uit 45 v.Chr. en is dus meer dan 2000 jaar oud. Richard McClintock, een professor latijn aan de Hampden-Sydney College in Virginia, heeft één van de meer obscure latijnse woorden, consectetur, uit een Lorem Ipsum passage opgezocht, en heeft tijdens het zoeken naar het woord in de klassieke literatuur de onverdachte bron ontdekt. Lorem Ipsum komt uit de secties 1.10.32 en 1.10.33 van \"de Finibus Bonorum et Malorum\" (De uitersten van goed en kwaad) door Cicero, geschreven in 45 v.Chr. Dit boek is een verhandeling over de theorie der ethiek, erg populair tijdens de renaissance. De eerste regel van Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", komt uit een zin in sectie 1.10.32."
       },
       {
-        "sectionTitle": "Why do we use it?",
-        "sectionText": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+        "sectionTitle": "Waarom gebruiken we het?",
+        "sectionText": "Het is al geruime tijd een bekend gegeven dat een lezer, tijdens het bekijken van de layout van een pagina, afgeleid wordt door de tekstuele inhoud. Het belangrijke punt van het gebruik van Lorem Ipsum is dat het uit een min of meer normale verdeling van letters bestaat, in tegenstelling tot \"Hier uw tekst, hier uw tekst\" wat het tot min of meer leesbaar nederlands maakt. Veel desktop publishing pakketten en web pagina editors gebruiken tegenwoordig Lorem Ipsum als hun standaard model tekst, en een zoekopdracht naar \"lorem ipsum\" ontsluit veel websites die nog in aanbouw zijn. Verscheidene versies hebben zich ontwikkeld in de loop van de jaren, soms per ongeluk soms expres (ingevoegde humor en dergelijke)."
       },
       {
-        "sectionTitle": "Where can I get some?",
-        "sectionText": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc."
+        "sectionTitle": "Waar kan ik het vinden?",
+        "sectionText": "Er zijn vele variaties van passages van Lorem Ipsum beschikbaar maar het merendeel heeft te lijden gehad van wijzigingen in een of andere vorm, door ingevoegde humor of willekeurig gekozen woorden die nog niet half geloofwaardig ogen. Als u een passage uit Lorum Ipsum gaat gebruiken dient u zich ervan te verzekeren dat er niets beschamends midden in de tekst verborgen zit. Alle Lorum Ipsum generators op Internet hebben de eigenschap voorgedefinieerde stukken te herhalen waar nodig zodat dit de eerste echte generator is op internet. Het gebruikt een woordenlijst van 200 latijnse woorden gecombineerd met een handvol zinsstructuur modellen om een Lorum Ipsum te genereren die redelijk overkomt. De gegenereerde Lorum Ipsum is daardoor altijd vrij van herhaling, ingevoegde humor of ongebruikelijke woorden etc."
       }
     ]
   },
   "NavBar": {
     "routeLabel": {
-      "/home": "Home",
-      "/about": "About"
+      "/home": "Startpagina",
+      "/about": "Over ons"
     }
   },
   "Message": {
-    "Loading": "Waiting for page to load...",
+    "Loading": "Wachten op pagina to load...",
     "Error": {
-      "General": "Failed to accomplish task :-("
+      "General": "Het is niet gelukt :-("
     }
   }
 }

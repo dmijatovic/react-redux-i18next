@@ -12,10 +12,8 @@ import { Provider } from 'react-redux';
 import appStore from './store';
 
 //INITIAL LOAD of locale
-//import { initLocale } from './utils';
-//initLocale(appStore.dispatch);
-
-import './i18n';
+import { initLocale } from './i18n';
+initLocale(appStore.dispatch);
 
 //LOCAL - STYLES
 import './styles/index.scss';

@@ -43,12 +43,17 @@ export class Home extends React.Component {
     return (
       <React.Fragment>
         <div className="page-body-header">
-          <NamespacesConsumer ns={['us']}>
+          <NamespacesConsumer>
             {(trans, { i18n, ready }) => {
               //debugger;
-              console.log('NamespaceConsumer...', i18n);
+              logGroup({
+                title: 'Home',
+                method: 'NamespaceConsumer',
+                i18n,
+                ready,
+              });
               if (ready === true) {
-                return <h2>{trans('Header.appTitle')}</h2>;
+                return <h2>{trans('Home.pageTitle')}</h2>;
               } else {
                 return <h2>translating...</h2>;
               }
@@ -100,11 +105,13 @@ export class Home extends React.Component {
 const mapStateToProps = state => {
   //debugger
   //get translations from i18n reducer
-  let { data } = state.i18n.lang;
+  let { data } = state.i18r.lang;
   if (data) {
+    //debugger;
     return {
-      pageTitle: data['Home.pageTitle'],
-      introText: data['Home.introText'],
+      pageTitle: data['Home']['pageTitle'],
+      introText: data['Home']['introText'],
+      ns: state.i18r.lang.ns,
       loader: state.loader,
     };
   } else {

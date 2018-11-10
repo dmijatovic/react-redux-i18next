@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 //router
 import { BrowserRouter } from 'react-router-dom';
 import AppRouter from '../router/AppRouter';
+//i18n
+import { NamespacesConsumer } from 'react-i18next';
 //local
 import { Header, NavBar, Footer } from './index';
 import { logGroup } from '../utils';
@@ -23,21 +25,25 @@ const Page = props => {
   });
   return (
     <BrowserRouter>
-      <React.Fragment>
-        <Header
-          appTitle={props.appTitle}
-          pageTitle={props.pageTitle}
-          languages={props.languages}
-        />
-        <NavBar />
-        <section className="page-body">
-          <AppRouter />
-        </section>
-        <Footer
-          left={props.footerLeft}
-          right={props.footerRight}
-        />
-      </React.Fragment>
+      <NamespacesConsumer>
+        {trans => (
+          <React.Fragment>
+            <Header
+              appTitle={trans('Header.appTitle')}
+              pageTitle={props.pageTitle}
+              languages={props.languages}
+            />
+            <NavBar />
+            <section className="page-body">
+              <AppRouter />
+            </section>
+            <Footer
+              left={trans('Footer.left')}
+              right={trans('Footer.right')}
+            />
+          </React.Fragment>
+        )}
+      </NamespacesConsumer>
     </BrowserRouter>
   );
 };
@@ -48,16 +54,14 @@ const Page = props => {
  * @param {*} state
  */
 const mapStateToProps = state => {
-  //debugger
   //get translations from i18n reducer
-  let { data } = state.i18n.lang;
-  if (data) {
-    //debugger
+  let { lang } = state.i18r;
+  if (lang) {
     return {
-      appTitle: data['Header.appTitle'],
-      footerLeft: data['Footer.left'],
-      footerRight: data['Footer.right'],
-      languages: state.i18n.options,
+      //language reducer with all info
+      i18r: state.i18r,
+      //list of languages - easy reference
+      languages: state.i18r.options,
       //this prop is dynamically updated by pages
       pageTitle: state.header.pageTitle,
     };
@@ -65,7 +69,7 @@ const mapStateToProps = state => {
     //debugger
     return {
       pageTitle: state.header.pageTitle,
-      languages: state.i18n.options,
+      languages: state.i18r.options,
     };
   }
 };

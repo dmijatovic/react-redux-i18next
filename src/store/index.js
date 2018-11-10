@@ -14,18 +14,20 @@ import {
   headerReducer,
   languageReducer,
   personsReducer,
+  i18nextReducer,
 } from './reducers';
 
 //APP CUSTOM MIDDLEWARE
 import { asyncFetch, actionLogger } from './middleware';
 
 //debugger
-
 const reducers = combineReducers({
   loader: loaderReducer,
   header: headerReducer,
   persons: personsReducer,
-  i18n: languageReducer,
+  //redux part on i18n
+  i18r: languageReducer,
+  i18n: i18nextReducer,
 });
 
 const appStore = createStore(

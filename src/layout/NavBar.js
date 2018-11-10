@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //REDUX
 //import { connect } from 'react-redux';
+import { withNamespaces } from 'react-i18next';
 //ROUTER
 import { NavLink } from 'react-router-dom';
 //LOCAL
@@ -14,6 +15,7 @@ import routes from '../router/routes';
 class NavBar extends Component {
   createLinks = () => {
     let links = [];
+    let trans = this.props.t;
     routes.forEach(item => {
       if (item.label) {
         //extract translations
@@ -28,7 +30,7 @@ class NavBar extends Component {
               key={item.path}
               to={item.path}
               activeClassName="selected">
-              {item.label}
+              {trans(`NavBar.routeLabel.${item.path}`)}
             </NavLink>
           </li>
         );
@@ -53,14 +55,14 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default withNamespaces()(NavBar);
 
 /* problems with router selected flag when using redux ?!?
 //------------------- REDUX CONNECTION --------------------------
 const mapStateToProps = state => {
   //debugger
   //get translations from i18n reducer
-  let { data } = state.i18n.lang;
+  let { data } = state.i18r.lang;
   if (data){
     return {
       routeLabel: data["NavBar.routeLabel"]

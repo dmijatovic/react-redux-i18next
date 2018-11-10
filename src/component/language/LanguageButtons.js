@@ -68,17 +68,18 @@ const mapDispatchToProps = dispatch => {
  */
 const mapStateToProps = state => {
   //debugger
-  let { key, data } = state.i18n.lang;
-  if (key) {
+  let { key, data } = state.i18r.lang;
+  if (key && data) {
     //language is loaded
+    //debugger;
     return {
-      languages: state.i18n.options,
+      languages: state.i18r.options,
       selected: key,
-      selectLabel: data['Language.selectLabel'],
+      selectLabel: data['Language']['selectLabel'],
     };
   } else {
     return {
-      languages: state.i18n.options,
+      languages: state.i18r.options,
       selected: null,
     };
   }

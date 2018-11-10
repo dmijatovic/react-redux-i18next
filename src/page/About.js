@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 //REDUX
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import * as actionType from '../store/actions';
 
 import { Loader, TextOnlySection } from '../component';
@@ -20,29 +21,32 @@ class About extends Component {
   getContent = () => {
     //debugger
     let jsx;
-    // if (this.props.loader.show) {
-    //   jsx = <Loader type={this.props.loader.type} />;
-    // } else if (this.props.textSections) {
-    //   jsx = this.props.textSections.map((item, i) => {
-    //     return (
-    //       <TextOnlySection
-    //         key={i}
-    //         sectionTitle={item.sectionTitle}
-    //         sectionText={item.sectionText}
-    //       />
-    //     );
-    //   });
-    // }
-    //debugger;
-    let { t } = this.props;
-    jsx = <h1>{t('us:default.Header.appTitle')}</h1>;
+    let trans = this.props.t;
+
+    if (this.props.loader.show) {
+      jsx = <Loader type={this.props.loader.type} />;
+    } else {
+      let textSections = trans('About.pageSections', {
+        returnObjects: true,
+      });
+      jsx = textSections.map((item, i) => {
+        return (
+          <TextOnlySection
+            key={i}
+            sectionTitle={item.sectionTitle}
+            sectionText={item.sectionText}
+          />
+        );
+      });
+    }
     return jsx;
   };
   render() {
+    let trans = this.props.t;
     return (
       <React.Fragment>
         <div className="page-body-header">
-          <h2>{this.props.pageTitle}</h2>
+          <h2>{trans('About.pageTitle')}</h2>
         </div>
         <section className="about-page">
           {this.getContent()}
@@ -58,16 +62,16 @@ class About extends Component {
     });
     //temp loader demo
     //remove in production :-)
-    // this.props.dispatch({
-    //   type: actionType.SHOW_LOADER,
-    // });
-    // //change loader state after 2 seconds
-    // setTimeout(() => {
-    //   //hide loader
-    //   this.props.dispatch({
-    //     type: actionType.HIDE_LOADER,
-    //   });
-    // }, 2000);
+    this.props.dispatch({
+      type: actionType.SHOW_LOADER,
+    });
+    //change loader state after 2 seconds
+    setTimeout(() => {
+      //hide loader
+      this.props.dispatch({
+        type: actionType.HIDE_LOADER,
+      });
+    }, 2000);
   }
   componentDidUpdate() {
     logGroup({
@@ -86,34 +90,37 @@ class About extends Component {
   }
 }
 
-// //-------------- REDUX CONNECTION ---------------------
-// /**
-//  * Map redux store states to local component properties
-//  * @param state: object, redux store object
-//  */
+//-------------- REDUX CONNECTION ---------------------
+/**
+ * Map redux store states to local component properties
+ * @param state: object, redux store object
+ */
 
-//  const mapStateToProps = state => {
-//   //get translations from i18n reducer
-//   let { data } = state.i18n.lang;
-//   if (data) {
-//     //debugger
-//     return {
-//       pageTitle: data['About.pageTitle'],
-//       textSections: data['About.pageSections'],
-//       loader: state.loader,
-//     };
-//   } else {
-//     return {
-//       loader: state.loader,
-//     };
-//   }
-// };
+const mapStateToProps = state => {
+  //get translations from i18n reducer
+  let { data } = state.i18r.lang;
+  if (data) {
+    //debugger
+    return {
+      pageTitle: data['About.pageTitle'],
+      textSections: data['About.pageSections'],
+      loader: state.loader,
+    };
+  } else {
+    return {
+      loader: state.loader,
+    };
+  }
+};
 
-// /**
-//  * Connected class component
-//  * If second function mapDispatchToProps is not passed
-//  * dispatch function is automatically added to props
-//  */
-// export default connect(mapStateToProps)(About);
+/**
+ * Connected class component
+ * If second function mapDispatchToProps is not passed
+ * dispatch function is automatically added to props
+ */
+export default compose(
+  withNamespaces('core'),
+  connect(mapStateToProps)
+)(About);
 
-export default withNamespaces()(About);
+//export default withNamespaces()(About);

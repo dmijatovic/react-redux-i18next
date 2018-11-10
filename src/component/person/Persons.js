@@ -3,7 +3,8 @@ import React from 'react';
 
 //THIRD PARTY
 import { connect } from 'react-redux';
-
+import { compose } from 'redux';
+import { withNamespaces } from 'react-i18next';
 //LOCAL
 import * as actionType from '../../store/actions';
 import './Persons.scss';
@@ -24,6 +25,7 @@ export class Persons extends React.Component {
   getContent = () => {
     //create jsx content
     let jsx;
+    let trans = this.props.t;
     if (this.props.persons.length > 0) {
       jsx = this.props.persons.map(p => {
         //debugger
@@ -31,8 +33,8 @@ export class Persons extends React.Component {
           <PersonCard
             {...p}
             deletePerson={this.props.onDeletePerson}
-            addedLabel={this.props.personCardAddedLabel}
-            atLabel={this.props.personCardAtLabel}
+            addedLabel={trans('PersonCard.addedLabel')}
+            atLabel={trans('PersonCard.atLabel')}
             key={p.id}
           />
         );
@@ -40,24 +42,25 @@ export class Persons extends React.Component {
     } else {
       jsx = (
         <div className="persons-collection-empty">
-          <p>{this.props.personsListEmptyMessage}</p>
+          <p>{trans('Persons.ListEmptyMessage')}</p>
         </div>
       );
     }
     return jsx;
   };
   render() {
+    let trans = this.props.t;
     return (
       <div className="persons">
         <AddPerson
-          title={this.props.addPersonTitle}
-          namePlaceholder={
-            this.props.addPersonInputNamePlaceholder
-          }
-          agePlaceholder={
-            this.props.addPersonInputAgePlaceholder
-          }
-          btnLabel={this.props.addPersonBtnLabel}
+          title={trans('AddPerson.title')}
+          namePlaceholder={trans(
+            'AddPerson.input.name.placeholder'
+          )}
+          agePlaceholder={trans(
+            'AddPerson.input.age.placeholder'
+          )}
+          btnLabel={trans('AddPerson.btnLabel')}
           addPerson={this.props.onAddPerson}
         />
         <div className="persons-collection">
@@ -78,11 +81,11 @@ export class Persons extends React.Component {
 const mapStateToProps = state => {
   //debugger
   //get translations from i18n reducer
-  let { data } = state.i18n.lang;
+  let { data } = state.i18r.lang;
   if (data) {
     return {
       persons: state.persons,
-      addPersonTitle: data['AddPerson.title'],
+      /*addPersonTitle: data['AddPerson.title'],
       addPersonInputNamePlaceholder:
         data['AddPerson.input.name.placeholder'],
       addPersonInputAgePlaceholder:
@@ -91,7 +94,7 @@ const mapStateToProps = state => {
       personsListTitle: data['Persons.ListTitle'],
       personsListEmptyMessage: data['Persons.ListEmptyMessage'],
       personCardAddedLabel: data['PersonCard.addedLabel'],
-      personCardAtLabel: data['PersonCard.atLabel'],
+      personCardAtLabel: data['PersonCard.atLabel'],*/
     };
   } else {
     return {
@@ -120,7 +123,10 @@ const mapDispatchToProps = dispatch => {
 };
 
 //----------- EXPORT CONNECTED COMPONENT ------------
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  withNamespaces(),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )
 )(Persons);
