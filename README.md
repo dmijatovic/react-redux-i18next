@@ -22,6 +22,8 @@ import * as US from "./locale/en/translation.json";
 import US from "./locale/en/translation.json";
 ```
 
+This setup uses redux and custom middleware to load translation files and change language. Language change is passed to i18next using custom redux middleare. The i18next implementation is in i18n folder.
+
 ### How to add language?
 
 - **create translation file**: create new json file based on the default json file en.json at the same location (static/data/en.json). The filename needs to be defined in the config file (see point 3). Go to google translate and translate all items :-). _Maybe we can use Google Translate API?!? When double-quotes (") appear in the text use escape chart (\\). See example below._
@@ -72,13 +74,13 @@ i18n:{
 
 ### Methods
 
-Script **locale.js (util/locale.js)** performs following operations:
+Script **i18n (i18n/index.js)** performs following operations:
 
-- `getLanguage(key)`: provided localStorage key the function will try to get users language preference. This is possible for the users that already visited site and did not cleared localStorage. If no prefference value exists in the localStorage we check navigator.language. If navigator language is avaliable in translations we will load it, otherwise we will load default language defined in config file (store/app.cfg.js)
+- `getLanguage()`: the function will try to get user language preference. This is possible for the users that already visited site and did not cleared localStorage. If no prefference value exists in the localStorage we check navigator.language. If navigator language is avaliable in translations we will load it, otherwise we will load default language defined in config file (store/app.cfg.js)
 
-- `setLanguage(key,val)`: this function saves language selected by user. The function is called by redux middleware (store/middleware.js) after json file is loaded.
+- `setLanguage(val)`: this function saves language selected by user. The function is called by redux middleware (store/middleware.js) after json file is loaded.
 
-- `initLocale(dispatch)`: this is initial function called from index.js at the start of application. It will retreive info about which language file should be lodaded and dispatch GET_LANGUAGE action. This action will be intercepted by custom middleware which will fetch json file and on success 'transform' action type into SET_LANG_OK. For the list of language actions see redux actons file (store/actions.js)
+- `initLocale(dispatch)`: this is initial function called from index.js at the start of application. It will retreive info about language to be lodaded and dispatch GET_LANGUAGE action. This action will be intercepted by custom middleware which will fetch json file, pass it to i18next and 'transform' action type into SET_LANG_OK. For the list of language actions see redux actons file (store/actions.js)
 
 Script **middleware.js (store/middleware.js)** holds `asyncFetch` method responsible for loading json file using fetch API. This method will transform 'initial' action type GET_LANGUAGE into 'final' action types SET_LANG_OK or SET_LANG_ERR.
 
